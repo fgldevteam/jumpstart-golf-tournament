@@ -1,4 +1,8 @@
 $(document).ready(function() {
+
+    // The maximum number of options
+    var MAX_OPTIONS = 10;
+
     $('#regform')
         .formValidation({
             // I am validating Bootstrap form
@@ -32,6 +36,58 @@ $(document).ready(function() {
             }
         })
 
+        // Add button click handler
+        .on('click', '.addButton', function() {
+            var $template = $('#optionTemplate'),
+                $clone    = $template
+                                .clone()
+                                .removeClass('hide')
+                                .removeAttr('id')
+                                .insertBefore($template),
+                $option   = $clone.find('[name="option[]"]');
+
+            // Add new field
+            $('#regform').formValidation('addField', $option);
+        })
+
+
+        .on('click', '.removeButton', function() {
+            var $row    = $(this).parents('.form-group'),
+                $option = $row.find('[name="option[]"]');
+
+            // Remove element containing the option
+            $row.remove();
+
+            // Remove field
+            $('#regform').formValidation('removeField', $option);
+        })
+
+
+
+        // Called after adding new field
+        .on('added.field.fv', function(e, data) {
+            // data.field   --> The field name
+            // data.element --> The new field element
+            // data.options --> The new field options
+
+            if (data.field === 'option[]') {
+                if ($('#regform').find(':visible[name="option[]"]').length >= MAX_OPTIONS) {
+                    $('#regform').find('.addButton').attr('disabled', 'disabled');
+                }
+            }
+        })
+
+        // Called after removing the field
+        .on('removed.field.fv', function(e, data) {
+           if (data.field === 'option[]') {
+                if ($('#regform').find(':visible[name="option[]"]').length < MAX_OPTIONS) {
+                    $('#regform').find('.addButton').removeAttr('disabled');
+                }
+            }
+        })
+
+
+
         .on('success.form.fv', function(e) {
             // Prevent form submission
             e.preventDefault();
@@ -52,6 +108,6 @@ $(document).ready(function() {
             //         // ... Process the result ...
             //     }
             // });
-            
+
         });
 });

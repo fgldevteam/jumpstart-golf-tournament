@@ -34,112 +34,53 @@
 			</div>
 				<form id="regform">
 					<!-- <h2>Conference Registration</h2> -->
-					<h1>Personal Information</h1>
+					<h1>Parent Information</h1>
 					<table id="personal-table">
 						<tr>
-							<td><label id="label-first">First</label></td>
-							<td colspan="2"><input type="text" class="med" id="firstname"></input></td>
-							<td><label id="label-last">Last</label></td>
-							<td colspan="2"><input type="text" class="med" id="lastname"></input></td>																					
-						</tr>
-						
-						<tr>
-							<td><label id="label-phone">Phone</label></td>
-							<td colspan="2"><input type="text" class="med" id="phone"></input></td>
-							<td><label id="label-office">Office</label></td>
-							<td colspan="2">	
-								<select name="office" id="office" class="form-control med">
-									<option value=""></option>    
-									<option value="Calgary">Calgary</option>    
-									<option value="Toronto">Toronto/Mississauga</option> 
-									<option value="Laval">Laval</option>    
-								</select>
-							</td>																					
-							
+							<td><label id="label-first">First<br />Name</label></td>
+							<td colspan="2"><input type="text" class="form-control" id="firstname"></input></td>
+							<td><label id="label-last">Last<br />Name</label></td>
+							<td colspan="2"><input type="text" class="form-control" id="lastname"></input></td>																					
 						</tr>
 						
 						<tr>
 							<td><label id="label-email">Email</label></td>
-							<td colspan="5"><input type="text" class="long" id="email"></input></td>
+							<td colspan="5"><input type="text" class="form-control" id="email"></input></td>
 						</tr>
 						
 						<tr>
-							<td><label id="label-diet">Dietary<br />Needs</label></td>
-							<td colspan="5"><input type="text" class="long" id="diet"></input></td>
+							<td colspan="5"><label id="label-adult-number">Number of Adults Attending</label></td>
+							<td colspan="1"><input type="text" class="form-control" id="numberofadults"></input></td>
 						</tr>
 						
-<!-- 						<tr>
-							<td><label>Roommate</label></td>
-							<td colspan="5">
-								<input type="text" class="long" id="roommate"></input>
-								<small>Please note: All AVPs will be sharing rooms, no exceptions</small>
-							</td>
 
-						</tr> -->	
-						<tr>
-							<td colspan="3"><label id="label-bus">Will you be taking the bus from Calgary?</label></td>
-							<td colspan="2">
-								
-								<select name="bus" id="bus" class="bus-select">
-								                        <option value=""></option>
-								                        <option value="yes">Yes</option>
-								                        <option value="no">No</option>
-								                    </select>
-								                    <br />
-								
-							</td>
-							
-						</tr>
-						<tr> 
-						<td colspan="8">
-							<center><small>* Please note parking at the hotel is $18 this expense will not be covered through the conference</small></center>
-						</td>
-						</tr>
 					</table>
 					<br />
 					
-					<h1 id="activity-header">Activity Selection &nbsp;&nbsp;&mdash;&nbsp;&nbsp; You may pick one from each day if you choose</h1>
-					<p><strong>* OPTIONAL NOT MANDATORY *</strong></p>
-					<table>
-						<tr>
-							<td valign="top" width="55%">
-								<h3>Day 1</h3>
-								<p><input type="radio" name="day1" value="yoga"> Yoga <small>(1 Hour)</small></p>
-								<ul>
-									<li>Class led by Leah-Anne Bignell</li>
-								</ul>
+					<h1 id="activity-header">Childern Information</h1>
+				
+						<button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
 
-								<p><input type="radio" name="day1" value="trail run"> Trail Run <small>(1 hour)</small></p>
-								<ul>
-									<li>8 – 10KM trail run led one of Calgary’s<br />own ultra-runners Mike Maloney</li>
-									<li>5KM run led by one of FGL’s finest</li>
-								</ul>
+						<!-- The option field template containing an option field and a Remove button -->
+					    <div class="form-group hide" id="optionTemplate">
+					        <div class="col-xs-offset-3 col-xs-5">
+					            <label>Child's Name</label><input class="form-control" type="text" name="option[]" />
+					            <label>Child's Age</label><input class="form-control" type="text" name="option[]" />
+					            <label>Child's Gender</label><input class="form-control" type="text" name="option[]" />
+					            <label>Child's Allergies</label><input class="form-control" type="text" name="option[]" />
+					        </div>
+					        <div class="col-xs-4">
+					            <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+					        </div>
+					    </div>
 
-								<a class="clear-selection" href="#" onclick="$('input[name=day1]').attr('checked',false);">Clear Day 1 Selection</a>
-							</td>
-							
-							<td valign="top">
-								<h3>Day 2</h3>
-								<p><input type="radio" name="day2" value="hike"> Hike <small>(1 Hour)</small></p>
-								<ul>
-									<li>5KM beginners hike led by Matt Fay</li>
-								</ul>
 
-								<p><input type="radio" name="day2" value="crossfit"> Crossfit Class <small>(1 hour)</small></p>
-								<ul>
-									<li>Geared towards ski &amp; snowboarding<br />led by Jay Raymundo</li>
-									
-								</ul>
-								<br />
-								<a class="clear-selection" href="#" onclick="$('input[name=day2]').attr('checked',false);">Clear Day 2 Selection</a>
-							</td>
-							
-						</tr>
-						
-					</table>
+
+
+
 					<br />
 					<div id="sendemail"></div>
-					<button type="submit" id="submit" class="btn">Send Registration</button>
+					<button type="submit" id="submit" class="btnsubmit">Send Registration</button>
 				</form>
 			</div>
 		
