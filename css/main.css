@@ -22,10 +22,10 @@ small.red{ color: #c00;  font-weight: bold; font-size: 13px; }
 	height: auto;
 	min-height: 917px;
 	margin: 0 auto;
-	
-	/*background: url('/images/mountains.png') top center no-repeat;*/
-	position: relative;
-	top: 20px;
+	/*position: relative;
+	top: 20px;*/
+	padding-top: 260px;
+
 }
 #subheading{
 	position: relative;
@@ -54,19 +54,18 @@ small.red{ color: #c00;  font-weight: bold; font-size: 13px; }
 	width: 560px;
 	color: #aaa;
 	margin-bottom: 10px;
-	border-left: 1px solid #477626;
-	border-right: 1px solid #477626;
-	border-bottom: 1px solid #477626;
+	border: 1px solid #477626;
+	background: url('../images/000000-0.4.png') top left repeat;
 
--webkit-box-shadow: -2px 37px 200px -31px rgba(255,255,255,1);
--moz-box-shadow: -2px 37px 200px -31px rgba(255,255,255,1);
-box-shadow: -2px 37px 200px -31px rgba(255,255,255,1);
+/*	-webkit-box-shadow: -2px 37px 200px -31px rgba(255,255,255,1);
+	-moz-box-shadow: -2px 37px 200px -31px rgba(255,255,255,1);
+	box-shadow: -2px 37px 200px -31px rgba(255,255,255,1);*/
 
-/*-webkit-box-shadow: 10px 10px 82px 36px rgba(255,255,255,1);
+-webkit-box-shadow: 10px 10px 82px 36px rgba(255,255,255,1);
 -moz-box-shadow: 10px 10px 82px 36px rgba(255,255,255,1);
-box-shadow: 10px 10px 82px 36px rgba(255,255,255,1);*/
-
-/*-webkit-box-shadow: 10px 10px 82px 19px rgba(255,255,255,1);
+box-shadow: 10px 10px 82px 36px rgba(255,255,255,1);
+/*
+-webkit-box-shadow: 10px 10px 82px 19px rgba(255,255,255,1);
 -moz-box-shadow: 10px 10px 82px 19px rgba(255,255,255,1);
 box-shadow: 10px 10px 82px 19px rgba(255,255,255,1);*/
 
