@@ -24,7 +24,7 @@ small.red{ color: #c00;  font-weight: bold; font-size: 13px; }
 	margin: 0 auto;
 	/*position: relative;
 	top: 20px;*/
-	padding-top: 260px;
+	padding-top: 60px;
 
 }
 #subheading{
@@ -47,10 +47,10 @@ small.red{ color: #c00;  font-weight: bold; font-size: 13px; }
 #form-div{
 	padding: 0px 20px 30px 20px;
 /*	background-color: #477626;*/
-	position: relative;
-	bottom: 218px;
+/*	position: relative;
+	bottom: 218px;*/
 	height: auto;
-	width: 560px;
+	width: 600px;
 	color: #aaa;
 	margin-bottom: 10px;
 	border: 1px solid #477626;
