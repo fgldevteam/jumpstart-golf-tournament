@@ -70,6 +70,12 @@ box-shadow: 10px 10px 82px 19px rgba(255,255,255,1);*/
 
 }
 
+#regform{
+
+}
+
+#personal-table{ width: 100%; }
+
 label{ color: #fff; font: 10px Arial, sans-serif; text-transform: uppercase; text-align: right; padding-right: 10px; display: block; }
 label.size-label{
 	width: 40px;
@@ -277,3 +283,6 @@ select.size-select{
 
 
 .error{ color: #c00; }
+
+.hide{ display: none !important; }
+.show { display: block !important; }

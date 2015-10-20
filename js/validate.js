@@ -1,113 +1,97 @@
 $(document).ready(function() {
 
-    // The maximum number of options
-    var MAX_OPTIONS = 10;
+    var kidIndex = 0;
 
     $('#regform')
-        .formValidation({
-            // I am validating Bootstrap form
-            framework: 'bootstrap',
-
-            // Feedback icons
-            icon: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-
-            // List of fields and their validation rules
-            fields: {
-                firstname: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The username is required and cannot be empty'
-                        },
-                        stringLength: {
-                            min: 6,
-                            max: 30,
-                            message: 'The username must be more than 6 and less than 30 characters long'
-                        },
-                        regexp: {
-                            regexp: /^[a-zA-Z0-9_]+$/,
-                            message: 'The username can only consist of alphabetical, number and underscore'
-                        }
-                    }
-                }
-            }
-        })
 
         // Add button click handler
         .on('click', '.addButton', function() {
+
+            kidIndex++;
+            $( "#kids" ).attr( "value", kidIndex );
+            console.log("kidIndex went up: " + kidIndex);
+
+            $( ".removeButton" ).addClass( "hide" );
+            $( ".removeButton" ).removeClass( "show" );
+            $( ".removeButton" ).last().addClass( "show" ).removeClass("hide");            
+
             var $template = $('#optionTemplate'),
                 $clone    = $template
                                 .clone()
                                 .removeClass('hide')
                                 .removeAttr('id')
-                                .insertBefore($template),
-                $option   = $clone.find('[name="option[]"]');
+                                .attr('data-kid-index', kidIndex)
+                                .insertBefore('#kidspace');
 
-            // Add new field
-            $('#regform').formValidation('addField', $option);
+            // Update the name attributes
+            $clone
+                .find('[name="childname"]').attr('id', 'childname'+ kidIndex ).end()
+                .find('[name="childgender"]').attr('id', 'childgender'+ kidIndex ).end()
+                .find('[name="childage"]').attr('id', 'childage'+ kidIndex ).end()
+                .find('[name="childallergies"]').attr('id', 'childallergies'+ kidIndex).end();
+                $( ".removeButton" ).last().addClass( "show" ).removeClass("hide");  
         })
 
+        .on('click', '.removeButton', function() { 
 
-        .on('click', '.removeButton', function() {
+            console.log("removed a row");
+
+            kidIndex--;
+            $( "#kids" ).attr( "value", kidIndex );
+            console.log("kidIndex went down: " + kidIndex);
+
+            $('.removeButton').removeClass('show').addClass('hide');
+            
             var $row    = $(this).parents('.form-group'),
                 $option = $row.find('[name="option[]"]');
 
             // Remove element containing the option
+            $('.removeButton').last().remove();
             $row.remove();
 
-            // Remove field
-            $('#regform').formValidation('removeField', $option);
+
+            console.log( $('.removeButton').last().attr('class') );
+
+            $('.removeButton').last().removeClass('hide').addClass('show');
+            
         })
 
-
-
-        // Called after adding new field
-        .on('added.field.fv', function(e, data) {
-            // data.field   --> The field name
-            // data.element --> The new field element
-            // data.options --> The new field options
-
-            if (data.field === 'option[]') {
-                if ($('#regform').find(':visible[name="option[]"]').length >= MAX_OPTIONS) {
-                    $('#regform').find('.addButton').attr('disabled', 'disabled');
-                }
-            }
-        })
-
-        // Called after removing the field
-        .on('removed.field.fv', function(e, data) {
-           if (data.field === 'option[]') {
-                if ($('#regform').find(':visible[name="option[]"]').length < MAX_OPTIONS) {
-                    $('#regform').find('.addButton').removeAttr('disabled');
-                }
-            }
-        })
-
-
-
-        .on('success.form.fv', function(e) {
+        .on('click', '#submit', function(e) {
             // Prevent form submission
             e.preventDefault();
 
-            // Some instances you can use are
-            var $form = $(e.target),        // The form instance
-                fv    = $(e.target).data('formValidation'); // FormValidation instance
+            var uidVal = $("#uid").val();
+            var fnameVal = $("#firstname").val();
+            var lnameVal = $("#lastname").val();
+            var emailVal = $("#email").val();
+            var numberofadultsVal = $("#numberofadults").val();
 
-            // Do whatever you want here ...
-            alert("works");
+            var kids = $("#kids").val();
+            var kiddata = "{";
 
-            // Use Ajax to submit form data
-            // $.ajax({
-            //     url: $form.attr('action'),
-            //     type: 'POST',
-            //     data: $form.serialize(),
-            //     success: function(result) {
-            //         // ... Process the result ...
-            //     }
-            // });
+            for (var i = 1; i <= kids; i++) {
+
+                var kidnameval = $("#childname"+i).val();
+                var kidgenderval = $("#childgender"+i).val();
+                var kidageval = $("#childage"+i).val();
+                var kidallergiesval = $("#childallergies"+i).val();
+
+                kiddata = kiddata + '"childname'+i+'": "'+kidnameval+'", "childgender'+i+'": "'+kidgenderval+'", "childage'+i+'": "'+ kidageval+'", "childallergies'+i+'": "'+ kidallergiesval+'", ';  
+            }
+
+            kiddata = kiddata + '"uid": "' + uidVal + '", "fname": "' + fnameVal +'", "lname": "' + lnameVal + '", "email": "' + emailVal + '", "numberofadults": "' + numberofadultsVal + '", "numberofkids": "' + kids + '" }';
+            console.log(kiddata); 
+
+            $.post("/sendEmail.php", { 
+                kiddata
+            }, function (data) {
+                // if (data != "ACK")
+                //     $("#messageBox").html("Unable to save.");
+                // else
+                //     $("#messageBox").html("Report saved successfully");
+            });
+            
+
 
         });
 });

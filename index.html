@@ -19,98 +19,89 @@
         <!--[if IE 8]>
         <link rel="stylesheet" href="ie8.css">
 		<![endif]-->
+
     </head>
 
-
-
     <body>
-
 
 		<div id="container">
 
 			<div id="form-div">
 			<div id="subheading">
-				<h4>2015 FGL Kid's Holiday Party</h4>
+				<h4>2015 FGL Kids' Holiday Party</h4>
 				<h5>December 12, 2015 &nbsp;&nbsp;&nbsp;&mdash;&nbsp;&nbsp;&nbsp;&nbsp; 11:00 – 2:00  &nbsp;&nbsp;&nbsp;&mdash;&nbsp;&nbsp;&nbsp;&nbsp; FGL Head Office</h5>
 			</div>
 				<form id="regform">
+
+					<script type="text/javascript">
+						var uniqid = Date.now();
+						document.write('<input type="hidden" id="uid" name="uid" value="'+ uniqid +'" />'); 
+					</script>
+
 					<!-- <h2>Conference Registration</h2> -->
 					<h1>Parent Information</h1>
 					<table id="personal-table">
 						<tr>
 							<td><label id="label-first">First<br />Name</label></td>
-							<td colspan="2"><input type="text" class="form-control" id="firstname"></input></td>
+							<td colspan="2"><input type="text" class="form-control" id="firstname" name="firstname"></input></td>
+							
 							<td><label id="label-last">Last<br />Name</label></td>
-							<td colspan="2"><input type="text" class="form-control" id="lastname"></input></td>																					
+							<td colspan="2"><input type="text" class="form-control" id="lastname" name="lastname"></input></td>																					
 						</tr>
 						
 						<tr>
 							<td><label id="label-email">Email</label></td>
-							<td colspan="5"><input type="text" class="form-control" id="email"></input></td>
+							<td colspan="5"><input type="text" class="form-control" id="email" name="email"></input></td>
 						</tr>
 						
 						<tr>
-							<td colspan="5"><label id="label-adult-number">Number of Adults Attending</label></td>
-							<td colspan="1"><input type="text" class="form-control" id="numberofadults"></input></td>
+							<td colspan="3"><label id="label-adult-number">Number of Adults Attending</label></td>
+							<td colspan="1"><input type="text" class="form-control" id="numberofadults" name="numberofadults" style="width: 40px;"></input></td>
 						</tr>
 						
 
 					</table>
 					<br />
 					
-					<h1 id="activity-header">Childern Information</h1>
-				
-						<button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
+					<h1 id="activity-header">Children Information</h1>
+						<input type="hidden" name="kids" id="kids" value="0" />
 
-						<!-- The option field template containing an option field and a Remove button -->
+						<p>ADD A CHILD <button type="button" class="btn btn-default btn-xs addButton"><i class="fa fa-plus"></i></button></p>
 
-
-						<div class="form-group hide" id="optionTemplate">
-						    <div class="col-xs-4">
-						        <input type="text" class="form-control" name="childname" placeholder="Name" />
-						    </div>
-						    <div class="col-xs-2">
-						    <select class="form-control" name="childgender">
-							  <option value="male">M</option>
-							  <option value="female">F</option>
-							</select>
-						        
-						    </div>
-						    <div class="col-xs-2">
-						        <input type="text" class="form-control" name="childage" placeholder="Age" />
-						    </div>
-						    <div class="col-xs-3">
-						        <input type="text" class="form-control" name="childallergies" placeholder="Allergies" />
-						    </div>
-
-						    <div class="col-xs-1">
-						        <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
-						    </div>
-						</div>						
-
-<!-- 					    <div class="form-group hide" id="optionTemplate">
-					        <div class="col-xs-offset-3 col-xs-5">
-					            <label>Child's Name</label><input class="form-control" type="text" name="option[]" />
-					            <label>Child's Age</label><input class="form-control" type="text" name="option[]" />
-					            <label>Child's Gender</label><input class="form-control" type="text" name="option[]" />
-					            <label>Child's Allergies</label><input class="form-control" type="text" name="option[]" />
-					        </div>
-					        <div class="col-xs-4">
-					            <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
-					        </div>
-					    </div> -->
-
-
-
-
-
+						<div id="kidspace"></div>
 					<br />
 					<div id="sendemail"></div>
-					<button type="submit" id="submit" class="btnsubmit">Send Registration</button>
+					<button type="submit" class="btnsubmit" id="submit">Send Registration</button>
 				</form>
 			</div>
 		
 		</div>
+
+
+		<div class="form-group hide" id="optionTemplate">
+		    <div class="col-xs-4">
+		        <input type="text" class="form-control" name="childname" placeholder="Name" />
+		    </div>
+		    <div class="col-xs-2">
+		    <select class="form-control" name="childgender">
+			  <option value="male">M</option>
+			  <option value="female">F</option>
+			</select>
+		        
+		    </div>
+		    <div class="col-xs-2">
+		        <input type="text" class="form-control" name="childage" placeholder="Age" />
+		    </div>
+		    <div class="col-xs-3">
+		        <input type="text" class="form-control" name="childallergies" placeholder="Allergies" />
+		    </div>
+
+		    <div class="col-xs-1">
+		        <button type="button" class="btn btn-default btn-xs removeButton show"><i class="fa fa-minus"></i></button>
+		    </div>
+		    <br /><br />
+		
+		</div>	
 
 		
        	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
