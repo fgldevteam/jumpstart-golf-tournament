@@ -85,7 +85,10 @@ $(document).ready(function() {
             $.post("/sendEmail.php", { 
                 kiddata
             }, function (data) {
-                    $("#messageBox").html("Report saved successfully");
+                            $("#regform").slideUp("normal", function() {                                        
+                            $("#registration-title").hide();                                            
+                            $("#regform").before("<h4>Thank You</h4><br /><center><p>Your registration has been received, we'll see you at the party!</p></center><br />");                                          
+                        });
             });
             
 
