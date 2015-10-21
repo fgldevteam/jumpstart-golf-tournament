@@ -113,6 +113,7 @@ $(document).ready(function() {
             // console.log(kiddata); 
 
             if(hasError == false) {
+                $(this).hide();
                 $.post("/sendEmail.php", { 
                     kiddata
                 }, function (data) {
