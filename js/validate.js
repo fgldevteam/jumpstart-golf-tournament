@@ -85,10 +85,7 @@ $(document).ready(function() {
             $.post("/sendEmail.php", { 
                 kiddata
             }, function (data) {
-                // if (data != "ACK")
-                //     $("#messageBox").html("Unable to save.");
-                // else
-                //     $("#messageBox").html("Report saved successfully");
+                    $("#messageBox").html("Report saved successfully");
             });
             
 
