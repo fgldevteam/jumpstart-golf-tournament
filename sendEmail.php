@@ -1,39 +1,24 @@
 <?php
 
-// //connect to DB
-// $host = "127.0.0.1";
-// $user = "root";
-// $pass = "";
-// $db = "leadership";
+//connect to DB
+$host = "127.0.0.1";
+$user = "root";
+$pass = "";
+$db = "kidsparty";
 
-// $connection = mysqli_connect($host, $user, $pass, $db);
+$connection = mysqli_connect($host, $user, $pass, $db);
 
-// if (mysqli_connect_errno()) {
-//     printf("Connect failed: %s\n", mysqli_connect_error());
-//     exit();
-// }
+if (mysqli_connect_errno()) {
+    printf("Connect failed: %s\n", mysqli_connect_error());
+    exit();
+}
 
 
-// //insert registration
-// $q = "INSERT INTO registrations (first, last, email, phone, office, diet, bus, activity_1, activity_2) VALUES(
-// 	 '".$_POST['fname']."', 
-// 	'".$_POST['lname']."', 
-// 	'".$_POST['email']."', 
-// 	'".$_POST['phone']."', 
-// 	'".$_POST['office']."',
-// 	'".$_POST['diet']."',
-// 	'".$_POST['bus']."',
-// 	'".$_POST['activity_1']."',
-// 	'".$_POST['activity_2']."'
-// 	 )";
-	 
-// mysqli_query($connection, $q) or die ("Error in query: $q. ".mysqli_error($connection));
-// mysql_query($q) or die ("Error in query: $q. ".mysql_error());
+
 
 $data = json_decode( $_POST['kiddata'] );
 
 $childname1 = $data->childname1;
-
 $childgender1 = $data->childgender1;
 $childage1 = $data->childage1;
 $childallergies1 = $data->childallergies1;
@@ -45,12 +30,28 @@ $childname3 = $data->childname3;
 $childgender3 = $data->childgender3;
 $childage3 = $data->childage3;
 $childallergies3 = $data->childallergies3;
+
 $uid = $data->uid;
 $fname = $data->fname;
 $lname = $data->lname;
 $email = $data->email;
 $numberofadults = $data->numberofadults;
 $numberofkids = $data->numberofkids;
+
+
+//insert parent record
+//insert registration
+$q = "INSERT INTO parents (uid, first, last, email, numberofadults) VALUES(
+	 '".$uid."', 
+	'".$fname."', 
+	'".$lname."', 
+	'".$email."', 
+	'".$numberofadults."'	 
+)";
+	 
+mysqli_query($connection, $q) or die ("Error in query: $q. ".mysqli_error($connection));
+mysql_query($q) or die ("Error in query: $q. ".mysql_error());
+
 
 
 $file = 'log.txt';
