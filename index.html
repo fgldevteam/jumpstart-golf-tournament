@@ -42,20 +42,24 @@
 					<h1>Parent Information</h1>
 					<table id="personal-table">
 						<tr>
-							<td><label id="label-first">First<br />Name</label></td>
+							<td colspan="2"></td>
+							<td colspan=""><span class="req">* = required field</span></td>
+						</tr>					
+						<tr>
+							<td><label id="label-first"><span class="req">*</span>First<br />Name</label></td>
 							<td colspan="2"><input type="text" class="form-control" id="firstname" name="firstname"></input></td>
 							
-							<td><label id="label-last">Last<br />Name</label></td>
+							<td><label id="label-last"><span class="req">*</span>Last<br />Name</label></td>
 							<td colspan="2"><input type="text" class="form-control" id="lastname" name="lastname"></input></td>																					
 						</tr>
 						
 						<tr>
-							<td><label id="label-email">Email</label></td>
+							<td><label id="label-email"><span class="req">*</span>Email</label></td>
 							<td colspan="5"><input type="text" class="form-control" id="email" name="email"></input></td>
 						</tr>
 						
 						<tr>
-							<td colspan="3"><label id="label-adult-number">Number of Adults Attending</label></td>
+							<td colspan="3"><label id="label-adult-number"><span class="req">*</span>Number of Adults Attending</label></td>
 							<td colspan="1"><input type="text" class="form-control" id="numberofadults" name="numberofadults" style="width: 40px;"></input></td>
 						</tr>
 						
@@ -71,7 +75,7 @@
 						<div id="kidspace"></div>
 					<br />
 					<div id="sendemail"></div>
-					<button type="submit" class="btnsubmit" id="submit">Send Registration</button>
+					<button type="" class="btnsubmit" id="formsubmit">Send Registration</button>
 				</form>
 			</div>
 		

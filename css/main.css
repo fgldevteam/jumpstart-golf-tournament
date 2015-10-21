@@ -246,6 +246,11 @@ select.size-select{
 	
 }
 
+.req{
+	padding: 0px 5px 0px 0px;
+	color: #fff;
+	font-size: 11px;
+}
 
 .btnsubmit {
 	font-family:GalaxiePolarisCondensed-Bold;

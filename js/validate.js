@@ -9,7 +9,6 @@ $(document).ready(function() {
 
             kidIndex++;
             $( "#kids" ).attr( "value", kidIndex );
-            console.log("kidIndex went up: " + kidIndex);
 
             $( ".removeButton" ).addClass( "hide" );
             $( ".removeButton" ).removeClass( "show" );
@@ -34,12 +33,8 @@ $(document).ready(function() {
 
         .on('click', '.removeButton', function() { 
 
-            console.log("removed a row");
-
             kidIndex--;
             $( "#kids" ).attr( "value", kidIndex );
-            console.log("kidIndex went down: " + kidIndex);
-
             $('.removeButton').removeClass('show').addClass('hide');
             
             var $row    = $(this).parents('.form-group'),
@@ -49,14 +44,11 @@ $(document).ready(function() {
             $('.removeButton').last().remove();
             $row.remove();
 
-
-            console.log( $('.removeButton').last().attr('class') );
-
             $('.removeButton').last().removeClass('hide').addClass('show');
             
         })
 
-        .on('click', '#submit', function(e) {
+        .on('click', '#formsubmit', function(e) {
             // Prevent form submission
             e.preventDefault();
 
@@ -65,6 +57,44 @@ $(document).ready(function() {
             var lnameVal = $("#lastname").val();
             var emailVal = $("#email").val();
             var numberofadultsVal = $("#numberofadults").val();
+
+
+            //validation
+            $(".error").hide();
+            var hasError = false;
+            var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+
+            if(fnameVal == '') {
+                $("#label-first").css('color', '#c00');
+                $("#firstname").css('border', 'thick solid #c00');
+                hasError = true;
+                $(window).scrollTop(0);
+            }
+
+            if(lnameVal == '') {
+                $("#label-last").css('color', '#c00');
+                $("#lastname").css('border', 'thick solid #c00');
+                hasError = true;
+                $(window).scrollTop(0);
+            }
+
+            if(numberofadultsVal == '') {
+                $("#label-first").css('color', '#c00');
+                $("#numberofadults").css('border', 'thick solid #c00');
+                hasError = true;
+                $(window).scrollTop(0);
+            }            
+
+            if(emailVal == '') {
+                $("#label-email").css('color', '#c00')
+                $("#email").css('border', 'thick solid #c00');
+                hasError = true;
+            } else if(!emailReg.test(emailVal)) {   
+                $("#label-email").css('color', '#c00')
+                $("#email").css('border', 'thick solid #c00');
+                hasError = true;
+            }
+
 
             var kids = $("#kids").val();
             var kiddata = "{";
@@ -80,18 +110,19 @@ $(document).ready(function() {
             }
 
             kiddata = kiddata + '"uid": "' + uidVal + '", "fname": "' + fnameVal +'", "lname": "' + lnameVal + '", "email": "' + emailVal + '", "numberofadults": "' + numberofadultsVal + '", "numberofkids": "' + kids + '" }';
-            console.log(kiddata); 
+            // console.log(kiddata); 
 
-            $.post("/sendEmail.php", { 
-                kiddata
-            }, function (data) {
-                            $("#regform").slideUp("normal", function() {                                        
-                            $("#registration-title").hide();                                            
-                            $("#regform").before("<h4>Thank You</h4><br /><center><p>Your registration has been received, we'll see you at the party!</p></center><br />");                                          
-                        });
-            });
-            
+            if(hasError == false) {
+                $.post("/sendEmail.php", { 
+                    kiddata
+                }, function (data) {
+                                $("#regform").slideUp("normal", function() {                                        
+                                $("#registration-title").hide();                                            
+                                $("#regform").before("<h4>Thank You</h4><br /><center><p>Your registration has been received, we'll see you at the party!</p></center><br />");                                          
+                            });
+                });
+            }
+        })
 
 
-        });
 });
