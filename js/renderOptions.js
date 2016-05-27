@@ -226,19 +226,7 @@ $(document).ready(function(){
 		var fgl_employee_included = $("input[type=radio][name=have_fgl_employee]").val();
 		var fgl_employee_random_choose = $(this).val();
 
-		$('#activity-header').removeClass('hidden').addClass('visible');
-
-		// $('#golfer1').empty();
-		// $('#golfer1').append(golferForm).removeClass('hidden').addClass('visible');
-		// $('#golfer2').empty();
-		// $('#golfer2').append(golferForm).removeClass('hidden').addClass('visible');
-		// $('#golfer3').empty();
-		// $('#golfer3').append(golferForm).removeClass('hidden').addClass('visible');
-		// $('#golfer4').empty();
-		// $('#golfer4').append(golferForm).removeClass('hidden').addClass('visible');
-
-		
-		
+		$('#activity-header').removeClass('hidden').addClass('visible');		
 
 
 		if( fgl_employee_included == 'yes' && fgl_employee_random_choose == 'yes') {
@@ -254,44 +242,6 @@ $(document).ready(function(){
 			$("#golfer4").removeClass('hidden').addClass('visible');
 
 		}
-
-
-		
-		// if(value == 'yes') {
-
-		// 	$(shirtSizeOptions).each(function(index){
-
-				
-		// 	})
-		// 	$('#golfer4').empty().removeClass('visible').addClass('hidden');
-
-		// }
-		// if(value == 'no'){
-			
-		// 	$('#golfer4').empty();
-		// 	$('#golfer4').append(golferForm).removeClass('hidden').addClass('visible');
-		// 	$(shirtSizeOptions).each(function(index){
-		// 	$('#golfer4').find('.shirt-size').append('<option value="'+ shirtSizeOptions[index].value +'">'+ 
-		// 									shirtSizeOptions[index].text +
-		// 								'</option>');
-				
-		// 	});
-
-		// 	$(shoeSizeOptions).each(function(index){
-		// 		$('#golfer4').find('.shoe-size').append('<option value="'+ shoeSizeOptions[index].value +'">'+ 
-		// 										shoeSizeOptions[index].text +
-		// 									'</option>');
-		// 	});
-		// 	$(clubOptions).each(function(index){
-		// 		$('#golfer4').find('.club-option').append('<option value="'+ clubOptions[index].value +'">'+ 
-		// 										clubOptions[index].text +
-		// 									'</option>');	
-		// 	});
-		// 	$('.selectpicker').selectpicker({
-		// 	width:"auto"
-		// });
-
-		// }
 
 	})
 
