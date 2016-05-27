@@ -3,8 +3,10 @@
 //connect to DB
 $host = "127.0.0.1";
 $user = "root";
-$pass = "root";
-$db = "kidsparty";
+$pass = "";
+$db = "jumpstart-golf-tournament";
+
+// var_dump($_POST);           
 
 $connection = mysqli_connect($host, $user, $pass, $db);
 
@@ -13,41 +15,49 @@ if (mysqli_connect_errno()) {
     exit();
 }
 
-$data = json_decode( $_POST['kiddata'] );
 
-$uid = $data->uid;
-$fname = $data->fname;
-$lname = $data->lname;
-$email = $data->email;
-$numberofadults = $data->numberofadults;
+$uid = $_POST['uidVal'];
+$team_name = preg_replace('/[^A-Za-z0-9\-\s]/', '', $_POST['teamName']);
+$team_captain_fname = preg_replace('/[^A-Za-z0-9\-\s]/', '', $_POST['captainFname']);
+$team_captain_lname = preg_replace('/[^A-Za-z0-9\-\s]/', '', $_POST['captainLname']);
+$include_fgl_employee = $_POST['fgl_employee_requested'];
+$fgl_employee_undecided = $_POST['fgl_employee_random_choose'];
+$golfer_fname = $_POST['golfer_fname'];
+$golfer_lname = $_POST['golfer_lname'];
+$golfer_handicap = $_POST['golfer_handicap'];
+$golfer_email = $_POST['golfer_email'];
+$golfer_phone = $_POST['golfer_phone'];
+$golfer_shirt_size = $_POST['golfer_shirt_size'];
+$golfer_shoe_size = $_POST['golfer_shoe_size'];
 
 //insert parent record
-$q = "INSERT INTO parents (uid, first, last, email, numberofadults) VALUES(
+$q = "INSERT INTO teams (uid, team_name, team_captain_fname, team_captain_lname, include_fgl_employee, fgl_employee_undecided) VALUES(
 	'".$uid."', 
-	'".$fname."', 
-	'".$lname."', 
-	'".$email."', 
-	'".$numberofadults."'	 
+	'".$team_name."', 
+	'".$team_captain_fname."', 
+	'".$team_captain_lname."', 
+	'".$include_fgl_employee."',
+	'".$fgl_employee_undecided."'	 
 )";
 	 
 mysqli_query($connection, $q) or die ("Error in query: $q. ".mysqli_error($connection));
 
 //kids records
 
-$numberofkids = $data->numberofkids;
+$numberofmembers = count($golfer_fname);
 
-for($i=1; $i<=$numberofkids; $i++ ){
+for($i=0; $i<$numberofmembers; $i++ ){
 
-	// $array[] = $data->{'childname' + $i};
-	// $array[] = $data->{'childgender' + $i};
-	// $array[] = $data->{'childallergies' + $i};
 
-	$q = "INSERT INTO kids (uid, name, gender, age, allergies) VALUES(
+	$q = "INSERT INTO team_members (uid, firstname, lastname, handicap, email, phone, shirt_size, shoe_size) VALUES(
 		'".$uid."', 
-		'".$data->{'childname' . $i}."', 
-		'".$data->{'childgender' . $i}."', 
-		'".$data->{'childage' . $i}."', 
-		'".$data->{'childallergies' . $i}."'	 
+		'".preg_replace('/[^A-Za-z0-9\-\s]/', '', $golfer_fname[$i])."', 
+		'".preg_replace('/[^A-Za-z0-9\-\s]/', '', $golfer_lname[$i])."', 
+		'".$golfer_handicap[$i]."', 
+		'".$golfer_email[$i]."',
+		'".$golfer_phone[$i]."',
+		'".$golfer_shirt_size[$i]."',
+		'".$golfer_shoe_size[$i]."'	 
 	)";
 
 	mysqli_query($connection, $q) or die ("Error in query: $q. ".mysqli_error($connection));

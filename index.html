@@ -6,16 +6,17 @@
     <head>
 	<meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>2015 FGL Kid's Holiday Party</title>
+        <title>Jumpstart Golf Tournament Registration</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" type="text/css" href="/css/formValidation.min.css">
-        <link rel="stylesheet" type="text/css" href="/css/main.css">    
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-select.min.css">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="css/formValidation.min.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">    
         <!--[if IE 8]>
         <link rel="stylesheet" href="ie8.css">
 		<![endif]-->
@@ -25,11 +26,15 @@
     <body>
 
 		<div id="container">
-
+			<center><img src="images/FGL-Golf-Classic.png" style="" /></center>
 			<div id="form-div">
 			<div id="subheading">
-				<h4>2015 FGL Kids' Holiday Party</h4>
-				<h5>December 12, 2015 &nbsp;&nbsp;&nbsp;&mdash;&nbsp;&nbsp;&nbsp;&nbsp; 11:00 – 2:00  &nbsp;&nbsp;&nbsp;&mdash;&nbsp;&nbsp;&nbsp;&nbsp; FGL Head Office</h5>
+				<h4>Jumpstart Golf Tournament</h4>
+				<h5>Monday July 18th , 11:30 am</h5>
+				<h5>Bearspaw Golf and Country Club </h5>
+				<h5>61 Hamilton Drive, NW</h5>
+				<h5>Calgary, AB T3R 1A2</h5>
+				
 			</div>
 				<form id="regform">
 
@@ -38,41 +43,68 @@
 						document.write('<input type="hidden" id="uid" name="uid" value="'+ uniqid +'" />'); 
 					</script>
 
-					<!-- <h2>Conference Registration</h2> -->
-					<h1>Parent Information</h1>
-					<table id="personal-table">
-						<tr>
-							<td colspan="2"></td>
-							<td colspan=""><span class="req">* = required field</span></td>
-						</tr>					
-						<tr>
-							<td><label id="label-first"><span class="req">*</span>First<br />Name</label></td>
-							<td colspan="2"><input type="text" class="form-control" id="firstname" name="firstname"></input></td>
+					
+					<h1>Team Information</h1>
+					<div id="team-table">
+					
+						<div class="row" >
+					
+							<div class="col-sm-4 ">
+								<input type="text" id="team-name" name="team-name" placeholder="Team Name" class="form-control"></input>
+							</div>
+					
+						<!-- </div>
+						<br>
+						<div class="row"> -->
+					
+							<div class="col-sm-4 ">
+								<input type="text"  id="captain-fname" name="fname" placeholder="Captain First Name" class="form-control"></input>
+							</div>
+					
+							<div class="col-sm-4 ">
+								<input type="text"  id="captain-lname" name="captain-lname" placeholder="Captain Last Name" class="form-control"></input>
+							</div>
+					
+						</div>
+						<br>
+						
+						<div class="row">
+							<div class="col-sm-8">
+								<label class="fgl_member_confirmation"><span class="req">*</span>Would you like to include an FGL employee in your foursome?</label>
+							</div>
+							<div class="col-sm-4">
+								<input type="radio" name="have_fgl_employee" value="yes"><label>Yes</label>
+								<input type="radio" name="have_fgl_employee" value="no"><label>No</label>
+							</div>
 							
-							<td><label id="label-last"><span class="req">*</span>Last<br />Name</label></td>
-							<td colspan="2"><input type="text" class="form-control" id="lastname" name="lastname"></input></td>																					
-						</tr>
-						
-						<tr>
-							<td><label id="label-email"><span class="req">*</span>Email</label></td>
-							<td colspan="5"><input type="text" class="form-control" id="email" name="email"></input></td>
-						</tr>
-						
-						<tr>
-							<td colspan="3"><label id="label-adult-number"><span class="req">*</span>Number of Adults Attending</label></td>
-							<td colspan="1"><input type="text" class="form-control" id="numberofadults" name="numberofadults" style="width: 40px;"></input></td>
-						</tr>
+						</div>
+
+						<div class="row hidden">
+							<div class="col-sm-8">
+								<label class="fgl_member_choice"><span class="req">*</span>Would you like us to pick a team member for your foursome?</label>
+							</div>
+							<div class="col-sm-4">
+								<input type="radio" name="fgl_employee_random_choose" value="yes"><label>Yes</label>
+								<input type="radio" name="fgl_employee_random_choose" value="no"><label>No</label>
+							</div>
+							
+						</div>
 						
 
-					</table>
+					</div>
 					<br />
 					
-					<h1 id="activity-header">Children Information</h1>
-						<input type="hidden" name="kids" id="kids" value="0" />
+					<h1 id="activity-header" class="hidden">Golfer's Information</h1>
+						
 
-						<p>ADD A CHILD <button type="button" class="btn btn-default btn-xs addButton"><i class="fa fa-plus"></i></button></p>
+					<div class="golferspace">
 
-						<div id="kidspace"></div>
+						<div id="golfer1" class="golfer hidden"></div>
+						<div id="golfer2" class="golfer hidden"></div>
+						<div id="golfer3" class="golfer hidden"></div>
+						<div id="golfer4" class="golfer hidden"></div>
+						
+					</div>
 					<br />
 					<div id="sendemail"></div>
 					<button type="" class="btnsubmit" id="formsubmit">Send Registration</button>
@@ -82,44 +114,22 @@
 		</div>
 
 
-		<div class="form-group hide" id="optionTemplate">
-		    <div class="col-xs-4">
-		        <input type="text" class="form-control" name="childname" placeholder="Name" />
-		    </div>
-		    <div class="col-xs-2">
-		    <select class="form-control" name="childgender">
-			  <option value="male">M</option>
-			  <option value="female">F</option>
-			</select>
-		        
-		    </div>
-		    <div class="col-xs-2">
-		        <input type="text" class="form-control" name="childage" placeholder="Age" />
-		    </div>
-		    <div class="col-xs-3">
-		        <input type="text" class="form-control" name="childallergies" placeholder="Allergies" />
-		    </div>
-
-		    <div class="col-xs-1">
-		        <button type="button" class="btn btn-default btn-xs removeButton show"><i class="fa fa-minus"></i></button>
-		    </div>
-		    <br /><br />
 		
-		</div>	
-
 		
        	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-       	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+       	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 
        	<!-- FormValidation plugin and the class supports validating Bootstrap form -->
-		<script type="text/javascript" src="/js/formValidation.min.js"></script>
-		<script type="text/javascript" src="/js/framework/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/formValidation.min.js"></script>
+		<script type="text/javascript" src="js/framework/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap-select.min.js"></script>
 
-		<script type="text/javascript" src="/js/validate.js"></script>
-		<!-- <script type="text/javascript" src="/js/contact.js"></script> -->
-		<script type="text/javascript" src="/js/jquery.backstretch.min.js"></script>
+		<script type="text/javascript" src="js/validate.js"></script>
+		<!-- <script type="text/javascript" src="js/contact.js"></script> -->
+		<script type="text/javascript" src="js/jquery.backstretch.min.js"></script>
+		<script type="text/javascript" src="js/renderOptions.js"></script>
 		<script type="text/javascript">
-		  $.backstretch("/images/maxresdefault.jpg");
+		  $.backstretch("images/green_grass_by_gardek.png");
 		</script>
 		
 

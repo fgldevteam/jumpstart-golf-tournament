@@ -32,7 +32,7 @@ $(document).ready(function() {
 
 		//validation
 		if(fnameVal == '') {
-			$("#label-first").css('color', '#c00');
+			$("#team-name").css('color', '#c00');
 			hasError = true;
 			$(window).scrollTop(0);
 		}
