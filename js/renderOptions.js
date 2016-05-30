@@ -171,11 +171,11 @@ $(document).ready(function(){
 							'<select name="golfer-shirtsize" class="shirt-size size-select selectpicker">'+
 		                    '</select>'+
 						'</div>'+
-						'<div class="col-sm-4 ">'+
+						// '<div class="col-sm-4 ">'+
 							
-							'<select name="golfer-shoesize" class="shoe-size size-select selectpicker">'+
-		                    '</select>'+
-						'</div>'+
+						// 	'<select name="golfer-shoesize" class="shoe-size size-select selectpicker">'+
+		    //                 '</select>'+
+						// '</div>'+
 						
 					'</div>';
 
@@ -188,11 +188,11 @@ $(document).ready(function(){
 			
 	});
 
-	$(shoeSizeOptions).each(function(index){
-		$('.shoe-size').append('<option value="'+ shoeSizeOptions[index].value +'">'+ 
-										shoeSizeOptions[index].text +
-									'</option>');
-	});
+	// $(shoeSizeOptions).each(function(index){
+	// 	$('.shoe-size').append('<option value="'+ shoeSizeOptions[index].value +'">'+ 
+	// 									shoeSizeOptions[index].text +
+	// 								'</option>');
+	// });
 	
 	$('.selectpicker').selectpicker({
 		width:"auto"

@@ -21,7 +21,7 @@ $(document).ready(function() {
             var golfer_email = [];
             var golfer_phone = [];
             var golfer_shirt_size = [];
-            var golfer_shoe_size = [];
+            // var golfer_shoe_size = [];
             var golfer_clubs = [];
 
             $(".golfer").each(function(index){
@@ -31,7 +31,7 @@ $(document).ready(function() {
                 golfer_email[index] = $(this).find('input[name="golfer-email"]').val();
                 golfer_phone[index] = $(this).find('input[name="golfer-phone"]').val();
                 golfer_shirt_size[index] = $(this).find('.shirt-size').find("option:selected").val();
-                golfer_shoe_size[index] = $(this).find('.shoe-size').find("option:selected").val();
+                // golfer_shoe_size[index] = $(this).find('.shoe-size').find("option:selected").val();
 
             });
             if (fgl_employee_requested == 'yes' && fgl_employee_random_choose == 'yes') {
@@ -41,7 +41,7 @@ $(document).ready(function() {
                 delete golfer_email[3]; 
                 delete golfer_phone[3]; 
                 delete golfer_shirt_size[3]; 
-                delete golfer_shoe_size[3];
+                // delete golfer_shoe_size[3];
             }
 
             console.log(uidVal);
@@ -56,7 +56,7 @@ $(document).ready(function() {
             console.log(golfer_email);
             console.log(golfer_phone);
             console.log(golfer_shirt_size);
-            console.log(golfer_shoe_size);
+            // console.log(golfer_shoe_size);
             
 
             
@@ -124,13 +124,13 @@ $(document).ready(function() {
                     $(window).scrollTop(0);   
                 }
             })
-            $(golfer_shoe_size).each(function(i){
-                if(golfer_shoe_size[i] == '' ) {
-                    $('div.shoe-size:eq('+ i+')').css('border', '2px solid #c00');
-                    hasError = true;
-                    $(window).scrollTop(0);   
-                }
-            })
+            // $(golfer_shoe_size).each(function(i){
+            //     if(golfer_shoe_size[i] == '' ) {
+            //         $('div.shoe-size:eq('+ i+')').css('border', '2px solid #c00');
+            //         hasError = true;
+            //         $(window).scrollTop(0);   
+            //     }
+            // })
 
 
 
@@ -150,7 +150,7 @@ $(document).ready(function() {
                     golfer_email : golfer_email,
                     golfer_phone : golfer_phone,
                     golfer_shirt_size : golfer_shirt_size,
-                    golfer_shoe_size : golfer_shoe_size
+                    // golfer_shoe_size : golfer_shoe_size
                 }, function (data) {
                                 console.log(data);
                                 $("#regform").slideUp("normal", function() {                                        

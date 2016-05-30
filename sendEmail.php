@@ -28,7 +28,7 @@ $golfer_handicap = $_POST['golfer_handicap'];
 $golfer_email = $_POST['golfer_email'];
 $golfer_phone = $_POST['golfer_phone'];
 $golfer_shirt_size = $_POST['golfer_shirt_size'];
-$golfer_shoe_size = $_POST['golfer_shoe_size'];
+// $golfer_shoe_size = $_POST['golfer_shoe_size'];
 
 //insert parent record
 $q = "INSERT INTO teams (uid, team_name, team_captain_fname, team_captain_lname, include_fgl_employee, fgl_employee_undecided) VALUES(
@@ -49,15 +49,14 @@ $numberofmembers = count($golfer_fname);
 for($i=0; $i<$numberofmembers; $i++ ){
 
 
-	$q = "INSERT INTO team_members (uid, firstname, lastname, handicap, email, phone, shirt_size, shoe_size) VALUES(
+	$q = "INSERT INTO team_members (uid, firstname, lastname, handicap, email, phone, shirt_size) VALUES(
 		'".$uid."', 
 		'".preg_replace('/[^A-Za-z0-9\-\s]/', '', $golfer_fname[$i])."', 
 		'".preg_replace('/[^A-Za-z0-9\-\s]/', '', $golfer_lname[$i])."', 
 		'".$golfer_handicap[$i]."', 
 		'".$golfer_email[$i]."',
 		'".$golfer_phone[$i]."',
-		'".$golfer_shirt_size[$i]."',
-		'".$golfer_shoe_size[$i]."'	 
+		'".$golfer_shirt_size[$i]."'
 	)";
 
 	mysqli_query($connection, $q) or die ("Error in query: $q. ".mysqli_error($connection));
