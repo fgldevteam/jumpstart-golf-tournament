@@ -211,6 +211,7 @@ $(document).ready(function(){
 		}
 		else if($(this).val() == 'no'){
 			$('#activity-header').removeClass('hidden').addClass('visible');
+                        $('#info-label').removeClass('visible').addClass('hidden');
 			$("#fgl_member_count_label").parent().parent().removeClass('visible').addClass('hidden');
 			$(".golfer").removeClass('hidden').addClass('visible');
 		}
@@ -222,10 +223,13 @@ $(document).ready(function(){
 	$("#fgl_member_count").change(function(){
 		
 		$(".golfer").removeClass('visible').addClass('hidden');
+                $('#info-label').removeClass('visible').addClass('hidden');
+                $('#activity-header').removeClass('visible').addClass('hidden');
 		var fgl_member_count = $("#fgl_member_count option:selected").val();
 		var members_left = 4 - parseInt(fgl_member_count);
 		
 		if (members_left > 0) {
+                        $('#info-label').removeClass('hidden').addClass('visible');
 			$('#activity-header').removeClass('hidden').addClass('visible');		
 			for(var j=0; j< members_left; j++) {
 				console.log(j);
