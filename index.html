@@ -70,7 +70,7 @@
 						
 						<div class="row">
 							<div class="col-sm-8">
-								<label class="fgl_member_confirmation"><span class="req">*</span>Would you like to include an FGL employee in your foursome?</label>
+								<label class="fgl_member_confirmation"><span class="req">*</span>Would you like to include FGL employee(s) in your foursome?</label>
 							</div>
 							<div class="col-sm-4">
 								<input type="radio" name="have_fgl_employee" value="yes"><label>Yes</label>
@@ -79,13 +79,30 @@
 							
 						</div>
 
-						<div class="row hidden">
+						<!-- <div class="row hidden">
 							<div class="col-sm-8">
 								<label class="fgl_member_choice"><span class="req">*</span>Would you like us to pick a team member for your foursome?</label>
 							</div>
 							<div class="col-sm-4">
 								<input type="radio" name="fgl_employee_random_choose" value="yes"><label>Yes</label>
 								<input type="radio" name="fgl_employee_random_choose" value="no"><label>No</label>
+							</div>
+							
+						</div> -->
+
+						<div class="row hidden">
+							<div class="col-sm-2 col-sm-offset-6">
+								<label id="fgl_member_count_label"><span class="req">*</span>How many?</label>
+							</div>
+							<div class="col-sm-4">
+								<select name="fgl_member_count" id="fgl_member_count" class="selectpicker">
+									<option value="">Select an option</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+
+								</select>
 							</div>
 							
 						</div>

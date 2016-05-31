@@ -204,15 +204,14 @@ $(document).ready(function(){
 
 		if($(this).val() == 'yes'){
 			
-			$(".fgl_member_choice").parent().parent().removeClass('hidden').addClass('visible');
+			$("#fgl_member_count_label").parent().parent().removeClass('hidden').addClass('visible');
 			$('#activity-header').removeClass('visible').addClass('hidden');
 			$(".golfer").removeClass('visible').addClass('hidden');
 
 		}
 		else if($(this).val() == 'no'){
 			$('#activity-header').removeClass('hidden').addClass('visible');
-			$(".fgl_member_choice").parent().parent().removeClass('visible').addClass('hidden');
-			$("input[type=radio][name=fgl_employee_random_choose]").prop('checked', false);
+			$("#fgl_member_count_label").parent().parent().removeClass('visible').addClass('hidden');
 			$(".golfer").removeClass('hidden').addClass('visible');
 		}
 		
@@ -220,29 +219,20 @@ $(document).ready(function(){
 
 
 	
-	$("input[type=radio][name=fgl_employee_random_choose]").change(function(){
+	$("#fgl_member_count").change(function(){
 		
-
-		var fgl_employee_included = $("input[type=radio][name=have_fgl_employee]").val();
-		var fgl_employee_random_choose = $(this).val();
-
-		$('#activity-header').removeClass('hidden').addClass('visible');		
-
-
-		if( fgl_employee_included == 'yes' && fgl_employee_random_choose == 'yes') {
-			$("#golfer1").removeClass('hidden').addClass('visible');
-			$("#golfer2").removeClass('hidden').addClass('visible');
-			$("#golfer3").removeClass('hidden').addClass('visible');
-			$("#golfer4").removeClass('visible').addClass('hidden');
+		$(".golfer").removeClass('visible').addClass('hidden');
+		var fgl_member_count = $("#fgl_member_count option:selected").val();
+		var members_left = 4 - parseInt(fgl_member_count);
+		
+		if (members_left > 0) {
+			$('#activity-header').removeClass('hidden').addClass('visible');		
+			for(var j=0; j< members_left; j++) {
+				console.log(j);
+				$(".golfer:eq("+ (j) +")").removeClass('hidden').addClass('visible');
+			}			
 		}
-		else if(fgl_employee_included == 'yes' && fgl_employee_random_choose == 'no' ) {
-			$("#golfer1").removeClass('hidden').addClass('visible');
-			$("#golfer2").removeClass('hidden').addClass('visible');
-			$("#golfer3").removeClass('hidden').addClass('visible');
-			$("#golfer4").removeClass('hidden').addClass('visible');
-
-		}
-
+		
 	})
 
 

@@ -14,7 +14,8 @@ $(document).ready(function() {
             var captainFname = $("#captain-fname").val();
             var captainLname = $("#captain-lname").val();
             var fgl_employee_requested = $("input[name='have_fgl_employee']:checked").val();
-            var fgl_employee_random_choose  = $("input[name='fgl_employee_random_choose']:checked").val();
+            // var fgl_employee_random_choose  = $("input[name='fgl_employee_random_choose']:checked").val();
+            var fgl_employee_count = $("#fgl_member_count option:selected").val();
             var golfer_fname = [];
             var golfer_lname = [];
             var golfer_handicap = [];
@@ -24,7 +25,7 @@ $(document).ready(function() {
             // var golfer_shoe_size = [];
             var golfer_clubs = [];
 
-            $(".golfer").each(function(index){
+            $(".golfer.visible").each(function(index){
                 golfer_fname[index] = $(this).find('input[name="golfer-fname"]').val();
                 golfer_lname[index] = $(this).find('input[name="golfer-lname"]').val();
                 golfer_handicap[index] = $(this).find('input[name="golfer-handicap"]').val();
@@ -34,22 +35,22 @@ $(document).ready(function() {
                 // golfer_shoe_size[index] = $(this).find('.shoe-size').find("option:selected").val();
 
             });
-            if (fgl_employee_requested == 'yes' && fgl_employee_random_choose == 'yes') {
-                delete golfer_fname[3];
-                delete golfer_lname[3]; 
-                delete golfer_handicap[3]; 
-                delete golfer_email[3]; 
-                delete golfer_phone[3]; 
-                delete golfer_shirt_size[3]; 
-                // delete golfer_shoe_size[3];
-            }
+            // if (fgl_employee_requested == 'yes') {
+            //     delete golfer_fname[3];
+            //     delete golfer_lname[3]; 
+            //     delete golfer_handicap[3]; 
+            //     delete golfer_email[3]; 
+            //     delete golfer_phone[3]; 
+            //     delete golfer_shirt_size[3]; 
+            //     // delete golfer_shoe_size[3];
+            // }
 
             console.log(uidVal);
             console.log(teamName);
             console.log(captainFname);
             console.log(captainLname);
             console.log(fgl_employee_requested);
-            console.log(fgl_employee_random_choose);
+            console.log(fgl_employee_count);
             console.log(golfer_fname);
             console.log(golfer_lname);
             console.log(golfer_handicap);
@@ -143,7 +144,7 @@ $(document).ready(function() {
                     captainFname : captainFname,
                     captainLname : captainLname,
                     fgl_employee_requested : fgl_employee_requested,
-                    fgl_employee_random_choose : fgl_employee_random_choose,
+                    fgl_employee_count : fgl_employee_count,
                     golfer_fname : golfer_fname,
                     golfer_lname : golfer_lname,
                     golfer_handicap : golfer_handicap,
@@ -158,7 +159,8 @@ $(document).ready(function() {
                                 $("#regform").before("<h4>Thank You</h4><br /><center><p>Your registration has been received</p></center><br />"+
                                                         "<center><p> Upon receipt of payment you will receive a letter from Jumpstart "+
                                                         " that will include the charitable number, contribution date, and amount"+
-                                                        " paid. This letter will act as the back up for your charitable expense.</p></center>"
+                                                        " paid. This letter will act as the back up for your charitable expense.</p></center>"+
+                                                        "<center> <p> If you chose to include FGL employee(s) in your team, we will contact you for further information.</p> </center>"
 
                                                     );                                          
                             });
