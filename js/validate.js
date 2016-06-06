@@ -160,7 +160,9 @@ $(document).ready(function() {
                                                         "<center><p> Upon receipt of payment you will receive a letter from Jumpstart "+
                                                         " that will include the charitable number, contribution date, and amount"+
                                                         " paid. This letter will act as the back up for your charitable expense.</p></center>"+
-                                                        "<center> <p> If you chose to include FGL employee(s) in your team, we will contact you for further information.</p> </center>"
+                                                        "<center> <p> If you chose to include FGL employee(s) in your team, we will contact you for further information.</p> </center>"+
+                                                        "<center><strong><a class='btn btn-default' href='https://secure.ctjumpstart.ca/registrant/TicketingWelcome.aspx?eventid=198982&langpref=en-CA&Referrer=direct%2fnone'> Click here to pay</a> </strong></center>"
+
 
                                                     );                                          
                             });
